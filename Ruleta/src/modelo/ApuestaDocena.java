@@ -31,10 +31,6 @@ public class ApuestaDocena extends TipoApuesta {
 	
 	@Override
 	public Object[] getValores() {
-		Integer[] valores = new Integer[36];
-		for(int i = 0; i < 36; i++) {
-			valores[i] = i+1;
-		}
 		return docenas.toArray();
 	}
 	

@@ -64,7 +64,6 @@ public class Ruleta extends JFrame {
 		
 		JDialog problema = new JDialog(this, "Ocurrió un problema", true);
 		problema.setBounds(100, 100, 450, 300);
-
 		JLabel textoProblema = new JLabel("");
 		problema.getContentPane().add(textoProblema);
 		
@@ -92,7 +91,7 @@ public class Ruleta extends JFrame {
 				try {
 					controller.setMonto(textFieldMonto.getText());
 				} catch (NumberFormatException e1) {
-					textoProblema.setText(e1.getMessage());
+					textoProblema.setText("Debe ingresar un numero en el monto");
 					problema.setVisible(true);
 				} catch (MontoNegativoException e1) {
 					textoProblema.setText(e1.getMessage());
@@ -115,7 +114,7 @@ public class Ruleta extends JFrame {
 		JLabel labelValorApostado = new JLabel("A que queres apostar");
 		panel.add(labelValorApostado);
 		
-		JComboBox comboBoxValorApostado = new JComboBox();
+		JComboBox<Object> comboBoxValorApostado = new JComboBox<Object>();
 		comboBoxValorApostado.setModel(new DefaultComboBoxModel<Object>(controller.getTiposDeValores()));
 		panel.add(comboBoxValorApostado);
 		
@@ -133,7 +132,6 @@ public class Ruleta extends JFrame {
 		
 		JDialog resultado = new JDialog(this, "Resultado de la jugada", true);
 		resultado.setBounds(100, 100, 450, 300);
-
 		JLabel textoResultado = new JLabel("");
 		resultado.getContentPane().add(textoResultado);
 		

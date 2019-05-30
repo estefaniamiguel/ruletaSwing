@@ -14,6 +14,7 @@ public class Apuesta {
 	Date fecha;
 	Object valorElegido = 1;
 	Date hoy = new Date();
+	private Resultado resultado;
 	public TipoApuesta getTipo() {
 		return tipo;
 	}
@@ -50,11 +51,11 @@ public class Apuesta {
 		this.fecha = fecha;
 	}
 	
-	public Resultado jugar() throws MontoMenorAlMinimoException {
+	public void jugar() throws MontoMenorAlMinimoException {
 		tipo.validarMontoMinimo(monto);
 		double valor = Math.random();
 		int elNumeroQueSalio = (int) (36 * valor);
-		return tipo.comprobar(elNumeroQueSalio, this);
+		resultado = tipo.comprobar(elNumeroQueSalio, this);
 	}
 	
 	public TipoApuesta[] getTiposDeApuestas() {
@@ -64,7 +65,11 @@ public class Apuesta {
 	public boolean puedeJugar() {
 		return fecha != null && fecha.after(hoy) && monto != null && tipo != null && valorElegido != null;
 	}
+	
 	public Object[] getTiposDeValores() {
 		return tipo.getValores();
+	}
+	public String getMensajeResultado() {
+		return resultado.getMensaje();
 	}
 }

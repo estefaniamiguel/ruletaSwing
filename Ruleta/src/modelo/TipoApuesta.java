@@ -10,8 +10,6 @@ public abstract class TipoApuesta {
 			return new Perdedor(elNumeroQueSalio);
 		}
 	}
-	abstract Double ganancia();
-	abstract boolean gano(int elNumeroQueSalio, Object valorElegido);
 	
 	public void validarMontoMinimo(Double monto) throws MontoMenorAlMinimoException {
 		if (monto == null || monto < this.getMontoMinimo()) {
@@ -19,6 +17,9 @@ public abstract class TipoApuesta {
 		}
 		
 	}
+	
+	abstract Double ganancia();
+	abstract boolean gano(int elNumeroQueSalio, Object valorElegido);
 	public abstract String getNombre();
 	abstract int getMontoMinimo();
 	public abstract Object[] getValores();

@@ -11,9 +11,9 @@ import modelo.TipoApuesta;
 
 public class RuletaController {
 	Apuesta apuesta = new Apuesta();
-	Resultado resultado;
+	
 	public void seApretoJugar() throws MontoMenorAlMinimoException {
-		resultado = apuesta.jugar();
+		apuesta.jugar();
 	}
 
 	public void setTipoApuesta(TipoApuesta tipoApuesta) {
@@ -29,11 +29,13 @@ public class RuletaController {
 	}
 
 	public String getMensajeResultado() {
-		return resultado.getMensaje();
+		return apuesta.getMensajeResultado();
 	}
 
 	public void setMonto(String montoString) throws NumberFormatException, MontoNegativoException {
-		apuesta.setMonto(Double.parseDouble(montoString));
+		if (!montoString.isEmpty()) {
+			apuesta.setMonto(Double.parseDouble(montoString));
+		}
 		
 	}
 
